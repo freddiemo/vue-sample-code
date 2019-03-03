@@ -38,6 +38,14 @@ img {
                 v-if="wizard == harry"
                 v-html="wizard + ' ' + hedwig">
             </p>
+            <p
+                v-if="wizard == ron"
+                v-html="wizard + ' ' + scabbers">
+            </p>
+            <p
+                v-if="wizard == hermione"
+                v-html="wizard + ' ' + crookshanks">
+            </p>
 
 		</div>
 
@@ -65,11 +73,12 @@ img {
                 el: "#app",
                 data: {
                     wizard      : "",
-                    harry       : emojify("harry"   ),
-                    hedwig      : emojify("hedwig"  ),
-                    ron         : emojify("ron"  ),
-                    scabbers    : emojify("hermione"),
-                    crookshanks : emojify("crookshanks")
+                    harry       : emojify("harry"       ),
+                    hedwig      : emojify("hedwig"      ),
+                    ron         : emojify("ron"         ),
+                    scabbers    : emojify("scabbers"    ),
+                    hermione    : emojify("hermione"    ),
+                    crookshanks : emojify("crookshanks" )
                 },
                 methods: {
                     wizards: function () {
@@ -82,7 +91,7 @@ img {
                 }
             })
 
-            app.wizard = app.harry
+            app.wizard = app.hermione
 
 		</script>
 
