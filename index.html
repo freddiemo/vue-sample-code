@@ -34,6 +34,12 @@ img {
 
 		<div id="app">
 
+            <template v-if="true" style="display: none;">
+                <p v-html="harry        + ' ' + hedwig      "></p>
+                <p v-html="ron          + ' ' + scabbers    "></p>
+                <p v-html="hermione     + ' ' + crookshanks "></p>
+            </template>
+
             <p
 				v-html="wizard + ' ' + (
 					wizard == harry    ? hedwig      :
