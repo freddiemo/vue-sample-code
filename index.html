@@ -35,17 +35,12 @@ img {
 		<div id="app">
 
             <p
-                v-if="wizard == harry"
-                v-html="wizard + ' ' + hedwig">
-            </p>
-            <p
-                v-if="wizard == ron"
-                v-html="wizard + ' ' + scabbers">
-            </p>
-            <p
-                v-if="wizard == hermione"
-                v-html="wizard + ' ' + crookshanks">
-            </p>
+				v-html="wizard + ' ' + (
+					wizard == harry    ? hedwig      :
+					wizard == ron      ? scabbers    :
+					wizard == hermione ? crookshanks : ''
+				)"
+            ></p>
 
 		</div>
 
