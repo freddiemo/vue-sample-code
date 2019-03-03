@@ -33,7 +33,7 @@ img {
 	<body>
 
 		<div id="app">
-			{{ message }}
+			<p v-html="wizard"></p>
 		</div>
 
 		<script>
@@ -59,7 +59,7 @@ function cast(emoji) {
 var app = new Vue({
 	el: "#app",
 	data: {
-		message: "Hello world!"
+		wizard: emojify("wizard")
 	}
 })
 
