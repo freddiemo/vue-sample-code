@@ -33,35 +33,56 @@ img {
 	<body>
 
 		<div id="app">
-			{{ message }}
+
+            <p
+                v-if="wizard == harry"
+                v-html="wizard + ' ' + hedwig">
+            </p>
+
 		</div>
 
 		<script>
 
-"use strict"
+            "use strict"
 
-// emojify returns the corresponding emoji image
-function emojify(name) {
-	var out = `<img src="emojis/` + name + `.png">`
-	return out
-}
+            // emojify returns the corresponding emoji image
+            function emojify(name) {
+                var out = `<img src="emojis/` + name + `.png">`
+                return out
+            }
 
-// cast returns a spell (function) that decorates the wizard
-function cast(emoji) {
-    if (!emoji) {
-        emoji = "¯\\_(ツ)_/¯"
-    }
-	return function (wizard) {
-		return emoji + wizard + emoji
-	}
-}
+            // cast returns a spell (function) that decorates the wizard
+            function cast(emoji) {
+                if (!emoji) {
+                    emoji = "¯\\_(ツ)_/¯"
+                }
+                return function (wizard) {
+                    return emoji + wizard + emoji
+                }
+            }
 
-var app = new Vue({
-	el: "#app",
-	data: {
-		message: "Hello world!"
-	}
-})
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    wizard      : "",
+                    harry       : emojify("harry"   ),
+                    hedwig      : emojify("hedwig"  ),
+                    ron         : emojify("ron"  ),
+                    scabbers    : emojify("hermione"),
+                    crookshanks : emojify("crookshanks")
+                },
+                methods: {
+                    wizards: function () {
+                        return [
+                            { name: this.harry      , pet: this.hedwig },
+                            { name: this.ron        , pet: this.scabbers },
+                            { name: this.hermione   , pet: this.crookshanks },
+                        ]
+                    }
+                }
+            })
+
+            app.wizard = app.harry
 
 		</script>
 
