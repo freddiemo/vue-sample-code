@@ -40,7 +40,13 @@
     <body>
 
         <div id="app">
-            <p v-html="message"></p>
+            <input type="text" v-model="message2"></input>
+            <p
+                v-html="
+                    message1.slice(0, 7) +
+                    message2 +
+                    message1.slice(12)
+            "></p>
         </div>
 
         <script>
@@ -55,7 +61,8 @@
             var app = new Vue({
                 el: "#app",
                 data: {
-                    message: "hello, world! " + emojify("celebration")
+                    message1: "hello, world! " + emojify("celebration"),
+                    message2: "Vue"
                 }
             })
 
