@@ -28,12 +28,21 @@
                 vertical-align: calc(-0.12109375em);
             }
 
+            .breathe--man { animation: breathe 4.0s infinite; }
+            .breathe--dog { animation: breathe 0.5s infinite; }
+
+            @keyframes breathe {
+                  0% { transform: scale(0.95); }
+                 50% { transform: scale(1.05); }
+                100% { transform: scale(0.95); }
+            }
+
 		</style>
 	</head>
 	<body>
 
 		<div id="app">
-			{{ message }}
+			<p v-html="active" @click="animagus"></p>
 		</div>
 
 		<script>
@@ -59,7 +68,38 @@
             var app = new Vue({
                 el: "#app",
                 data: {
-                    message: "Hello world!"
+                    active: emojify("sirius--man"),
+                    // sirius is an object that contains two states:
+                    // man and dog
+                    sirius: {
+                        man: emojify("sirius--man"),
+                        man: emojify("sirius--dog")
+                    }
+                },
+                methods: {
+                    // an animagus is a wizard whom can shapeshift
+                    animagus: function () {
+                        this.active = (
+                            this.active == this.sirius.man ?
+                                this.sirius.dog :
+                                this.sirius.man
+                        )
+                    }
+                },
+                // breathe returns the corresponding .breathe--*
+                breathe: function () {
+                    return (
+                        this.active == this.sirius.man ?
+                            "breathe--man"  :
+                            "breathe--dog"
+                    )
+                },
+                background: function () {
+                    return (
+                        this.active == this.sirius.man ?
+                            ""  :
+                            "black"
+                    )
                 }
             })
 
