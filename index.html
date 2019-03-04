@@ -121,7 +121,7 @@
                             ></span>
                         </div>
                         <div class="grid-cell--bottom"
-                            :style="corrected_color(swatch)">
+                            :style="corrected_color()">
                             {{ swatch.color.toUpperCase() }}
                         </div>
                     </div>
@@ -129,8 +129,8 @@
                 methods: {
                     corrected_color: function (swatch) {
                         return {
-                            color: swatch.color == '#ffffff' ?
-                            '#000000' : swatch.color
+                            color: this.swatch.color == '#ffffff' ?
+                            '#000000' : this.swatch.color
                         }
                     }
                 }
