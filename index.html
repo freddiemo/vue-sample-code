@@ -59,8 +59,7 @@ img {
 	</head>
 	<body>
 
-		<div class="app"
-            :class="{ 'theme--alive': is_open() && is_alive(), 'theme--dead': !is_alive() }">
+		<div class="app" :class="theme()">
 			<p>
 				Click the box!<br>
 				The cat's...<!--
@@ -134,6 +133,12 @@ var app = new Vue({
         jittering: function () {
             return {
                 jitter: this.is_alive()
+            }
+        },
+        theme: function () {
+            return {
+                'theme--alive': is_open() && is_alive(),
+                'theme-dead': !is_alive()
             }
         }
 	}
