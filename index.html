@@ -41,7 +41,7 @@
 	</head>
 	<body>
 
-		<div id="app">
+		<div id="app" :style="{ background: background() }">
 			<p v-html="active" @click="animagus" :class="breathe()"></p>
 		</div>
 
