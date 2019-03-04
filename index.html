@@ -32,8 +32,8 @@
             .breathe--dog { animation: breathe 0.5s infinite; }
 
             @keyframes breathe {
-                  0% { transform: scale(0.95); }
-                 50% { transform: scale(1.05); }
+                0% { transform: scale(0.95); }
+                50% { transform: scale(1.05); }
                 100% { transform: scale(0.95); }
             }
 
@@ -42,7 +42,7 @@
 	<body>
 
 		<div id="app">
-			<p v-html="active" @click="animagus"></p>
+			<p v-html="active" @click="animagus" :class="breathe()"></p>
 		</div>
 
 		<script>
@@ -55,25 +55,14 @@
                 return out
             }
 
-            // cast returns a spell (function) that decorates the wizard
-            function cast(emoji) {
-                if (!emoji) {
-                    emoji = "¯\\_(ツ)_/¯"
-                }
-                return function (wizard) {
-                    return emoji + wizard + emoji
-                }
-            }
-
             var app = new Vue({
                 el: "#app",
                 data: {
                     active: emojify("sirius--man"),
-                    // sirius is an object that contains two states:
-                    // man and dog
+                    // sirius is an object that contains two states: man and dog
                     sirius: {
                         man: emojify("sirius--man"),
-                        man: emojify("sirius--dog")
+                        dog: emojify("sirius--dog")
                     }
                 },
                 methods: {
@@ -84,22 +73,23 @@
                                 this.sirius.dog :
                                 this.sirius.man
                         )
-                    }
-                },
-                // breathe returns the corresponding .breathe--*
-                breathe: function () {
-                    return (
-                        this.active == this.sirius.man ?
-                            "breathe--man"  :
-                            "breathe--dog"
-                    )
-                },
-                background: function () {
-                    return (
-                        this.active == this.sirius.man ?
-                            ""  :
-                            "black"
-                    )
+                    },
+                    // breathe returns the corresponding .breathe--*
+                    breathe: function () {
+                        return (
+                            this.active == this.sirius.man ?
+                                "breathe--man" :
+                                "breathe--dog"
+                        )
+                    },
+                    // background returns the corresponding background
+                    background: function () {
+                        return (
+                            this.active == this.sirius.man ?
+                                "" :
+                                "black"
+                        )
+                    },
                 }
             })
 
